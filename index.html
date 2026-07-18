@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante El Ancla | Las Isletas de Granada</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GENERALES (COLORES ELEGANTES Y LIMPIOS) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; /* Azul noche profundo y elegante */
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN --- */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #b45309; /* Línea dorada / madera elegante */
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-logo img {
+            height: 40px;
+            width: 40px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fbbf24; /* Dorado elegante */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* --- PORTADA PRINCIPAL (HERO) --- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 130px 20px 60px 20px;
+            /* Fondo con la foto real del restaurante frente al lago */
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
+                        url('https://i.ibb.co/m5FL5Gvj/Screenshot-2026-07-17-17-21-59-185-com-facebook-katana.png') no-repeat center center/cover;
+        }
+
+        .hero-logo-main {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            border-radius: 50%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 12px;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: #b45309; /* Tono arcilla/madera colonial */
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(180, 83, 9, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECCIÓN DE PAQUETES CON TRANSPARENCIAS --- */
+        .section-container {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #fbbf24;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 45px;
+            font-size: 1.05rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* TARJETAS CON EL HERMOSO EFECTO TRANSPARENTE EN EL FONDO */
+        .package-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Tarjeta 1: Transparencia elegante sobre la foto de la piscina */
+        .card-eco {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.93)), 
+                        url('https://i.ibb.co/2YSPDpVL/Screenshot-2026-07-17-17-21-13-297-com-facebook-katana.png') no-repeat center center/cover;
+        }
+
+        /* Tarjeta 2: Transparencia de fondo con el pescado frito que te encantó */
+        .card-menu {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.93)), 
+                        url('https://i.ibb.co/nq8Cdq4V/Screenshot-2026-07-17-17-22-21-594-com-facebook-katana.png') no-repeat center center/cover;
+        }
+
+        .package-header-img {
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .package-header-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #fbbf24;
+            color: #0f172a;
+            padding: 6px 14px;
+            font-weight: 700;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .package-info {
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            background: rgba(15, 23, 42, 0.5); /* Capa extra transparente */
+        }
+
+        .package-info h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .package-info ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .package-info ul li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Viñeta elegante con forma de ancla */
+        .package-info ul li::before {
+            content: '⚓';
+            color: #fbbf24;
+            font-size: 0.9rem;
+        }
+
+        /* --- SECCIÓN CONTACTO --- */
+        .contact-section {
+            background-color: #0b111e;
+            border-top: 1px solid rgba(251, 191, 36, 0.2);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 40px;
+            background-color: #25d366; /* Verde WhatsApp profesional */
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+            margin-top: 15px;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* --- AJUSTES PARA PANTALLAS DE CELULARES --- */
+        @media (max-width: 768px) {
+            header { padding: 12px 15px; }
+            .logo-text { font-size: 1.3rem; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 0.9rem; }
+
+            .hero h1 { font-size: 2.3rem; }
+            .hero p { font-size: 1rem; }
+            .hero-logo-main { width: 120px; height: 120px; }
+
+            .packages-grid {
+                grid-template-columns: 1fr; /* Una tarjeta debajo de la otra en móviles */
+                gap: 25px;
+            }
+            .package-header-img { height: 210px; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="https://i.ibb.co/KcW50T1c/Screenshot-2026-07-17-17-21-32-823-com-facebook-katana.png" alt="Logo de El Ancla">
+            <span class="logo-text">El Ancla</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#paquetes">Planes</a></li>
+                <li><a href="#reservas">Reservar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <img src="https://i.ibb.co/KcW50T1c/Screenshot-2026-07-17-17-21-32-823-com-facebook-katana.png" class="hero-logo-main" alt="Logo Oficial">
+        <h1>Restaurante El Ancla</h1>
+        <p>Disfruta de la mejor sazón frente al lago, rodeado de la naturaleza única y la tranquilidad de Las Isletas de Granada, Nicaragua.</p>
+        <a href="#paquetes" class="btn-action">Ver Planes de Pasadía</a>
+    </section>
+
+    <section class="section-container" id="paquetes">
+        <h2 class="section-title">Nuestros Paquetes</h2>
+        <p class="section-subtitle">Disfruta en familia o con amigos de un día espectacular (Mínimo 12 personas)</p>
+
+        <div class="packages-grid">
+            
+            <div class="package-card card-eco">
+                <div class="package-header-img">
+                    <span class="package-badge">Desde C$250 P/P</span>
+                    <img src="https://i.ibb.co/2YSPDpVL/Screenshot-2026-07-17-17-21-13-297-com-facebook-katana.png" alt="Instalaciones de El Ancla">
+                </div>
+                <div class="package-info">
+                    <h3>Pasadía Económico</h3>
+                    <ul>
+                        <li>Transporte de ida y vuelta en lancha incluido.</li>
+                        <li>Uso completo de la piscina y áreas de descanso frente al lago.</li>
+                        <li>Permitido traer tu propia comida y snacks.</li>
+                        <li>Un ambiente fresco, privado y natural.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="package-card card-menu">
+                <div class="package-header-img">
+                    <span class="package-badge">Desde C$750 P/P</span>
+                    <img src="https://i.ibb.co/nq8Cdq4V/Screenshot-2026-07-17-17-22-21-594-com-facebook-katana.png" alt="Menú de Almuerzos El Ancla">
+                </div>
+                <div class="package-info">
+                    <h3>Pasadía con Almuerzo Completo</h3>
+                    <ul>
+                        <li>Transporte marítimo ida y vuelta garantizado.</li>
+                        <li>Uso de la piscina y cómodas instalaciones al aire libre.</li>
+                        <li><strong>Menú de Almuerzo Incluido (A elegir):</strong></li>
+                        <li style="padding-left: 12px; font-style: italic; color: #fbbf24;">Pescado Frito Personal (Guapote)</li>
+                        <li style="padding-left: 12px; font-style: italic; color: #fbbf24;">Filete de Pez (Tilapia)</li>
+                        <li style="padding-left: 12px; font-style: italic; color: #fbbf24;">Filete de Pollo de la casa</li>
+                        <li>Acompañados con arroz, tostones calientitos, ensalada y limón.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section" id="reservas">
+        <h2 class="section-title">¿Planeando tu próxima visita?</h2>
+        <p style="color: #94a3b8; max-width: 500px; margin: 10px auto 20px auto;">Haz la reservación de tu grupo con tiempo para coordinar tu lancha de transporte hacia las Isletas.</p>
+        
+        <a href="https://wa.me/50589343467?text=Hola!%20Quiero%20pedir%20información%20para%20reservar%20en%20el%20Restaurante%20El%20Ancla" target="_blank" class="contact-btn">
+            💬 Reservar por WhatsApp
+        </a>
+    </section>
+
+</body>
+</html>
